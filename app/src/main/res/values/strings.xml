@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">My Family</string>
+    <string name="security">Security</string>
+    <string name="sos">SOS</string>
+    <string name="sos_mes">In case of emergency, keep telling family members to contact me.</string>
+    <string name="guard">GUARD</string>
+    <string name="guard_msg">Open when you are on a potentially dangerous journey.</string>
+    <string name="ic_home">Home</string>
+    <string name="ic_dashboard">Dashboard</string>
+    <string name="ic_guard">Guard</string>
+    <string name="ic_profile">Profile</string>
+    <string name="my_family">My Family</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
