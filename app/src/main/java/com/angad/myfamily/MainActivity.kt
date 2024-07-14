@@ -25,14 +25,24 @@ class MainActivity : AppCompatActivity() {
 
         bottomBar.setOnItemSelectedListener { menuItem->
 
-            if(menuItem.itemId==R.id.nav_home){
-                infilateFragment(HomeFragment.newInstance())
+            when (menuItem.itemId) {
+                R.id.nav_home -> {
+                    infilateFragment(HomeFragment.newInstance())
+                }
+                R.id.nav_guard -> {
+                    infilateFragment(GuardFragment.newInstance())
+                }
+                R.id.nav_dashboard -> {
+                    infilateFragment(DashboardFragment.newInstance())
+                }
+                R.id.nav_profile -> {
+                    infilateFragment(ProfileFragment.newInstance())
+                }
             }
-            else if (menuItem.itemId==R.id.nav_guard){
-                infilateFragment(GuardFragment.newInstance())
-            }
+
             true
         }
+        bottomBar.selectedItemId = R.id.nav_home
     }
 
     private fun infilateFragment(newInstance: Fragment) {
