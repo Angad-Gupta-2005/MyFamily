@@ -45,92 +45,14 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Family cards -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/family1_card"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_member"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/title"
-        android:layout_margin="16dp"
-        app:cardBackgroundColor="@color/white"/>
-
-    <!--    Family card 1 name content -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Angad Gupta"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_margin="15dp"
-        app:layout_constraintStart_toStartOf="@id/family1_card"
-        app:layout_constraintEnd_toEndOf="@id/family1_card"
-        app:layout_constraintTop_toTopOf="@id/family1_card"/>
-
-    <!--    Family Card no. 2 -->
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/family2_card"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:layout_constraintTop_toBottomOf="@id/family1_card"
-        android:layout_margin="16dp"
-        app:cardBackgroundColor="@color/white"/>
-
-    <!--    Family card no. 2 name content -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rajan Gupta"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_margin="15dp"
-        app:layout_constraintStart_toStartOf="@id/family2_card"
-        app:layout_constraintEnd_toEndOf="@id/family2_card"
-        app:layout_constraintTop_toTopOf="@id/family2_card"/>
-
-    <!--       Family card no. 3 -->
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/family3_card"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:layout_constraintTop_toBottomOf="@id/family2_card"
-        android:layout_margin="16dp"
-        app:cardBackgroundColor="@color/white"/>
-
-    <!--    Family card 3 name content -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kumkum Gupta"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_margin="15dp"
-        app:layout_constraintStart_toStartOf="@id/family3_card"
-        app:layout_constraintEnd_toEndOf="@id/family3_card"
-        app:layout_constraintTop_toTopOf="@id/family3_card"/>
-
-    <!--    Family card no. 4 -->
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/family4_card"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:layout_constraintTop_toBottomOf="@id/family3_card"
-        android:layout_margin="16dp"
-        app:cardBackgroundColor="@color/white"/>
-
-    <!--    Family card 4 name content -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Geeta Gupta"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_margin="15dp"
-        app:layout_constraintStart_toStartOf="@id/family4_card"
-        app:layout_constraintEnd_toEndOf="@id/family4_card"
-        app:layout_constraintTop_toTopOf="@id/family4_card"/>
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/member_item"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
