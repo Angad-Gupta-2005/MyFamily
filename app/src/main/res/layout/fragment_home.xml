@@ -14,7 +14,7 @@
         android:id="@+id/location"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/ic_location"
+        android:src="@drawable/ic_location2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="16dp"/>

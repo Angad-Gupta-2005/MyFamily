@@ -30,10 +30,30 @@ class HomeFragment : Fragment() {
 
         val nameU:String
         val listMembers = listOf(
-            MemberModel(nameU = "Angad"),
-            MemberModel(nameU = "Rajan"),
-            MemberModel(nameU = "Kumkum"),
-            MemberModel(nameU = "Ram"),
+            MemberModel(
+                nameU = "Angad",
+                address = "Mahatma Joytiba Phule nagar IIT market, Powai-400076",
+                battery = "80%",
+                distance = "210"
+            ),
+            MemberModel(
+                nameU = "Ram",
+                address = "17 street gandhi nagar near Dhramshala, Gorakhpur",
+                battery = "55%",
+                distance = "580"
+            ),
+            MemberModel(
+                nameU = "Shyam",
+                address = "Jai bhim office near tilak chok, Sant Nagar",
+                battery = "75%",
+                distance = "430"
+            ),
+            MemberModel(
+                nameU = "Rajan",
+                address = "Dream the mall near Bhandup Station",
+                battery = "83%",
+                distance = "500"
+            ),
         )
 
         val adapter = MemberAdapter(listMembers)

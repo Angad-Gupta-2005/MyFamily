@@ -13,18 +13,20 @@
         android:layout_margin="16dp"
         app:cardBackgroundColor="@color/white"/>
 
+    <!--    Family card 1 name content -->
+
 <!--    content avatar image-->
     <ImageView
         android:id="@+id/ic_man"
         android:layout_width="65dp"
         android:layout_height="65dp"
-        android:src="@drawable/ic_avatar"
         android:layout_margin="16dp"
+        android:src="@drawable/ic_contact"
         app:layout_constraintStart_toStartOf="@id/family_card"
-        app:layout_constraintTop_toTopOf="@id/family_card"
-        app:layout_constraintBottom_toBottomOf="@id/family_card"/>
+        app:layout_constraintTop_toTopOf="@id/name" />
 
-    <!--    Family card 1 name content -->
+
+<!--    1. Name heading-->
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
@@ -36,6 +38,128 @@
         android:layout_margin="16dp"
         app:layout_constraintStart_toEndOf="@id/ic_man"
         app:layout_constraintTop_toTopOf="@id/family_card"/>
+
+<!--    Time -->
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3:50"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="@id/name"
+        app:layout_constraintEnd_toEndOf="@id/family_card"
+        android:layout_marginEnd="15dp"/>
+
+<!--    Location icon -->
+
+    <ImageView
+        android:id="@+id/locationC"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_location"
+        app:layout_constraintStart_toStartOf="@id/name"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="-7dp"/>
+
+<!--    Location text -->
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/address"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/time"
+        app:layout_constraintStart_toEndOf="@id/locationC"
+        app:layout_constraintTop_toBottomOf="@id/name" />
+
+<!--    battery icon -->
+
+    <ImageView
+        android:id="@+id/ic_battery"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_battery"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/ic_man"
+        app:layout_constraintStart_toStartOf="@id/ic_man"/>
+
+<!--    battery percentage -->
+
+    <TextView
+        android:id="@+id/batteryP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="95%"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_marginStart="7dp"
+        app:layout_constraintTop_toTopOf="@id/ic_battery"
+        app:layout_constraintStart_toEndOf="@id/ic_battery"/>
+
+<!--    send message icon -->
+
+    <ImageView
+        android:id="@+id/ic_send"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_send"
+        app:layout_constraintTop_toTopOf="@id/ic_battery"
+        app:layout_constraintBottom_toBottomOf="@id/ic_battery"
+        app:layout_constraintStart_toEndOf="@+id/batteryP"
+        android:layout_marginStart="10dp"/>
+
+<!--    message icon text -->
+
+    <TextView
+        android:id="@+id/msg_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="223M"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/ic_battery"
+        app:layout_constraintStart_toEndOf="@id/ic_send"
+        android:layout_marginStart="7dp"/>
+
+<!--    wi-fi icon -->
+
+    <ImageView
+        android:id="@+id/ic_WiFi"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_wifi"
+        android:layout_marginStart="12dp"
+        app:layout_constraintTop_toTopOf="@id/ic_battery"
+        app:layout_constraintStart_toEndOf="@id/msg_txt"/>
+
+<!--   wi-fi text  -->
+
+    <TextView
+        android:id="@+id/wifi_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WiFi"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginStart="7dp"
+        app:layout_constraintTop_toTopOf="@id/ic_battery"
+        app:layout_constraintStart_toEndOf="@id/ic_WiFi" />
+
+<!--    call icon -->
+
+    <ImageView
+        android:id="@+id/ic_call"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_call"
+        app:layout_constraintTop_toTopOf="@id/ic_battery"
+        app:layout_constraintEnd_toEndOf="@id/time" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

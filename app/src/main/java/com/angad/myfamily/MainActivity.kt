@@ -29,11 +29,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home -> {
                     infilateFragment(HomeFragment.newInstance())
                 }
+                R.id.nav_dashboard -> {
+                    infilateFragment(MapsFragment())
+                }
                 R.id.nav_guard -> {
                     infilateFragment(GuardFragment.newInstance())
-                }
-                R.id.nav_dashboard -> {
-                    infilateFragment(DashboardFragment.newInstance())
                 }
                 R.id.nav_profile -> {
                     infilateFragment(ProfileFragment.newInstance())
