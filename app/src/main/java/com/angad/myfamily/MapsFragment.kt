@@ -1,11 +1,14 @@
 package com.angad.myfamily
 
+import android.Manifest
+import android.content.pm.PackageManager
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -29,6 +32,17 @@ class MapsFragment : Fragment() {
         val mumbai = LatLng(19.0760, 72.8777)
         googleMap.addMarker(MarkerOptions().position(mumbai).title("Marker in Mumbai"))
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(mumbai))
+
+//        Current location enable
+
+        if(ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.ACCESS_FINE_LOCATION
+            )==PackageManager.PERMISSION_GRANTED
+            ){
+            googleMap.isMyLocationEnabled = true
+        }
+
     }
 
     override fun onCreateView(
