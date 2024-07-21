@@ -1,16 +1,24 @@
 package com.angad.myfamily
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class HomeFragment : Fragment() {
 
+    private val listContacts:ArrayList<ContactModel> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +69,73 @@ class HomeFragment : Fragment() {
         val recycler = requireView().findViewById<RecyclerView>(R.id.recycler_member)
         recycler.layoutManager = LinearLayoutManager(requireContext())
         recycler.adapter = adapter
+
+//        **************************************************************************
+//        Fetching the contact functionality
+
+
+        Log.d("FetchContact45", "fetchcontact: start karne wale hai ")
+
+//        Creating or working on a thread using coroutine
+
+        Log.d("FetchContact45", "fetchcontact: start ho gaya hai ${listContacts.size} ")
+        val inviteAdapter = InviteAdapter(listContacts)
+        Log.d("FetchContact45", "fetchcontact: end ho gaya hai")
+
+        CoroutineScope(Dispatchers.IO).launch {
+            Log.d("FetchContact45", "fetchcontact: coroutine start ")
+            listContacts.addAll(fetchContacts())
+            
+            withContext(Dispatchers.Main){
+                inviteAdapter.notifyDataSetChanged()
+            }
+
+            Log.d("FetchContact45", "fetchcontact: coroutine end ${listContacts.size} ")
+        }
+
+
+
+        val inviteRecycler = requireView().findViewById<RecyclerView>(R.id.recycler_invite)
+        inviteRecycler.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        inviteRecycler.adapter = inviteAdapter
+
+    }
+
+    @SuppressLint("Range")
+    private fun fetchContacts():ArrayList<ContactModel> {
+        Log.d("FetchContact45", "fetchcontact: start ")
+
+        val cr = requireActivity().contentResolver
+        val cursor = cr.query(ContactsContract.Contacts.CONTENT_URI,null,null,null,null)
+        //  creating an empty array list
+        val listContacts: ArrayList<ContactModel> = ArrayList()
+
+        if(cursor!=null && cursor.count>0){
+            while(cursor!=null && cursor.moveToNext()){
+                val id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
+                val name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+                val hasPhoneNumber = cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))
+
+                if(hasPhoneNumber>0){
+                    val pCur = cr.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,
+                        ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",
+                        arrayOf(id),
+                        ""
+                    )
+
+                    if (pCur != null && pCur.count>0){
+                        while (pCur != null && pCur.moveToNext()){
+                            val phoneNum =
+                                pCur.getString(pCur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                            listContacts.add(ContactModel(name,phoneNum))
+                        }
+                        pCur.close()
+                    }
+                }
+            }
+        }
+        return listContacts
+        Log.d("FetchContact45", "fetchcontact: end ")
     }
 
     companion object {
