@@ -117,6 +117,7 @@ class HomeFragment : Fragment() {
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private  fun fetchDatabaseContacts()  {
         val database = MyFamilyDatabase.getDatabase(requireContext())
         database.contactDao().getAllContact().observe(viewLifecycleOwner){
